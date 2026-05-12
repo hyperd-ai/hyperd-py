@@ -1,0 +1,72 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hyperd-ai"
+version = "0.1.0"
+description = "Python SDK for hyperD — pay-per-call DeFi APIs for AI agents over x402. 20 paid endpoints on Base USDC, no API key, no signup."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Thomas Potter", email = "hi@hyperd.ai" }]
+requires-python = ">=3.10"
+keywords = [
+    "hyperd",
+    "x402",
+    "defi",
+    "base",
+    "usdc",
+    "ai-agents",
+    "langchain",
+    "agent-tools",
+    "eip-3009",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "requests>=2.31.0",
+    "eth-account>=0.10.0",
+]
+
+[project.optional-dependencies]
+langchain = [
+    "langchain-core>=0.3.0",
+]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.6.0",
+    "mypy>=1.11.0",
+]
+
+[project.urls]
+Homepage = "https://hyperd.ai"
+Documentation = "https://github.com/hyperd-ai/hyperd-py"
+Repository = "https://github.com/hyperd-ai/hyperd-py"
+"Bug Tracker" = "https://github.com/hyperd-ai/hyperd-py/issues"
+"x402 protocol" = "https://x402.org"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hyperd"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
