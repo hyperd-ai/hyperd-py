@@ -129,6 +129,17 @@ There's no key store to rotate, no rate-limit form to fill out, no signup. The s
 
 All three inherit from `HyperdError` so you can catch the umbrella class.
 
+## Production integrators
+
+Other x402 merchants whose integrator docs reference this SDK's [`_buyer.py`](src/hyperd/_buyer.py) (~210 LOC, `requests` + `eth-account` only) as a canonical non-TypeScript buyer implementation:
+
+- **AgentOracle** ([@TKCollective](https://github.com/TKCollective)) — pay-per-call oracle aggregation on x402
+- **x402-market** ([@AsaiShota](https://github.com/AsaiShota)) — x402 marketplace + merchant tooling
+
+Coordination context: [x402-foundation/x402#2207](https://github.com/x402-foundation/x402/issues/2207) (the canonical-buyer / Bazaar resource-keying thread).
+
+If you're shipping an x402 service in Go, Rust, JVM, .NET, or any non-TS environment and want a working reference, `_buyer.py` is the smallest faithful implementation of the v2 wire format — copy-adapt freely (MIT).
+
 ## Links
 
 - **Production API**: https://api.hyperd.ai
