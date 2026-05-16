@@ -141,6 +141,21 @@ There's no key store to rotate, no rate-limit form to fill out, no signup. The s
 
 All three inherit from `HyperdError` so you can catch the umbrella class.
 
+## Remote MCP-over-HTTPS (for non-Python agents)
+
+hyperD's tool catalog is also exposed as a remote MCP server at `https://api.hyperd.ai/mcp`. The Python SDK is the right choice for Python agents; the remote MCP is the right choice for:
+
+- Agents in other languages that already speak MCP (TypeScript, Go via mcp-go, etc.)
+- Hosted agent platforms that pull tools from MCP URLs (Smithery, Cursor's remote MCP roadmap)
+- Quick API discovery without installing anything
+
+Same 17 tools, same per-IP free-tier quota, same x402 payment auth.
+
+```
+POST https://api.hyperd.ai/mcp
+{"jsonrpc":"2.0","id":1,"method":"tools/list"}
+```
+
 ## Production integrators
 
 Other x402 merchants whose integrator docs reference this SDK's [`_buyer.py`](src/hyperd/_buyer.py) (~210 LOC, `requests` + `eth-account` only) as a canonical non-TypeScript buyer implementation:
